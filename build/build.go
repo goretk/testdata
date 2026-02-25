@@ -27,12 +27,11 @@ func main() {
 	}
 	defer os.RemoveAll(buildDir)
 
-	cwd, err := os.Getwd()
+	goldFolder, err := os.Getwd()
 	if err != nil {
 		fmt.Println("No current working director:", err)
 		return
 	}
-	goldFolder := filepath.Join(cwd, "gold")
 
 	err = os.WriteFile(filepath.Join(buildDir, "target.go"), []byte(gofile), 0644)
 	if err != nil {
