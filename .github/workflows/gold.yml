@@ -1,0 +1,33 @@
+---
+name: Build Golden Binaries
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: 'ubuntu-latest'
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v6
+
+      - name: Setup Go
+        uses: actions/setup-go@v6
+        with:
+          go-version: 'stable'
+
+      - name: Run build script
+        run: |
+          go run ./build/build.go
+
+      - name: Add new gold images if created
+        run: |
+          # If there are new files, commit them.
+          if [[ -n $(git status --porcelain) ]]; then
+            git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git config --local user.name "github-actions[bot]"
+            git add gold-*
+            git commit -m "Commit new gold files."
+            git push
+          else
+            echo "::notice::Generated files are up to date."
+          fi
