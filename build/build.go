@@ -156,6 +156,7 @@ var spec = []struct {
 	{"1.24.0", []osarchTuple{{linux, []goarch{x86, amd64}}, {darwin, []goarch{arm64, amd64}}, {windows, []goarch{x86, amd64}}}},
 	{"1.25.0", []osarchTuple{{linux, []goarch{x86, amd64}}, {darwin, []goarch{arm64, amd64}}, {windows, []goarch{x86, amd64}}}},
 	{"1.26.0", []osarchTuple{{linux, []goarch{x86, amd64}}, {darwin, []goarch{arm64, amd64}}, {windows, []goarch{x86, amd64}}}},
+	{"1.27.0", []osarchTuple{{linux, []goarch{x86, amd64}}, {darwin, []goarch{arm64, amd64}}, {windows, []goarch{x86, amd64}}}},
 }
 
 const gofile = `package main
